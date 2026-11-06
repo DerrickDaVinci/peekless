@@ -1,9 +1,10 @@
 {
   "name": "peekless",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Clean screenshots, photos and text before you send them. Offline.",
   "scripts": {
+    "tauri": "tauri",
     "dev": "tauri dev",
     "build": "tauri build",
     "icon": "tauri icon assets/icon.png"
