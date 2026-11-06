@@ -45,7 +45,7 @@ jobs:
           releaseName: Peekless ${{ github.ref_name }}
           releaseBody: |
             Download the installer for your system below.
-            First launch on macOS: right-click Peekless.app and choose Open (the app is not notarized yet).
+            macOS: choose _aarch64.dmg (Apple silicon) or _x64.dmg (Intel). The app is not notarized yet, so the first launch is blocked once: open System Settings > Privacy & Security and click Open Anyway next to Peekless.
             First launch on Windows: if SmartScreen appears, click More info, then Run anyway.
           releaseDraft: true
           args: --target ${{ matrix.target }}

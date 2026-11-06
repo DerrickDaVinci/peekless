@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Peekless",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "identifier": "app.peekless.desktop",
   "build": {
     "frontendDist": "../ui"
@@ -33,6 +33,6 @@
     "longDescription": "Peekless hides emails, phone numbers, ID numbers, card numbers and API keys in screenshots and text, and strips hidden metadata such as GPS location from photos. Everything runs offline on your device.",
     "copyright": "MIT License",
     "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
-    "macOS": { "minimumSystemVersion": "13.0" }
+    "macOS": { "minimumSystemVersion": "13.0", "signingIdentity": "-" }
   }
 }

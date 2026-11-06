@@ -58,7 +58,8 @@ Every pattern that has a checksum is validated, so order numbers and timestamps 
 
 Download the latest installer from [Releases](../../releases).
 
-- **macOS 13+:** open the `.dmg` and drag Peekless to Applications. The app is not notarized yet, so the first time, right-click Peekless.app and choose **Open**. Peekless lives in the menu bar.
+- **macOS 13+:** download `_aarch64.dmg` for Apple silicon or `_x64.dmg` for Intel, open it and drag Peekless to Applications. The app is not notarized yet, so the first launch is blocked once: open **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to Peekless. After that it opens normally and lives in the menu bar.
+  If you prefer the terminal: `xattr -dr com.apple.quarantine /Applications/Peekless.app`
 - **Windows 10/11:** run the `.msi` or `-setup.exe`. If SmartScreen appears, click **More info → Run anyway**. For Chinese text recognition, install the Chinese language pack in Windows settings.
 
 ## Command line
@@ -129,6 +130,12 @@ Ideas and pull requests are welcome. New detection rules should come with tests 
 **自定义**
 
 快捷键可以自己录制；操作环的触发键（⌥ ⌘ ⌃ ⇧）、环上放哪些操作和顺序都能调；每一类识别规则可以单独开关；遮挡方式、文件保存位置和命名、界面语言、外观、开机自启都能设置。"剪贴板守护"页有一个"试一试"按钮，会放一张虚构的示例截图到剪贴板，方便你看守护功能怎么工作。
+
+**安装**
+
+到 [Releases](../../releases) 下载：Apple 芯片的 Mac 选 `_aarch64.dmg`，Intel 的 Mac 选 `_x64.dmg`，Windows 选 `_x64-setup.exe`。
+
+应用还没有经过 Apple 公证，所以 Mac 上第一次打开会被拦一次：打开**系统设置 → 隐私与安全性**，往下滚动，点 Peekless 旁边的**仍要打开**。之后就能正常使用，它会待在菜单栏里。Windows 如果弹出 SmartScreen，点**更多信息 → 仍要运行**。
 
 **隐私**
 
