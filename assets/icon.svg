@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    Peekless app icon.
+    Lane: soft 3D object-character. Metaphor: a screenshot card whose
+    redaction bar doubles as a mask (object + action + emotion = screenshot
+    card + hides what is sensitive + sly, protective). Palette: blue_trust
+    (#1865EE dominant, #3FA1F9 contrast, #F8F6F5 neutral, #1C212C ink).
+    Light from the upper left. macOS grid: 824 px body on a 1024 canvas.
+  -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3FA1F9"/>
+      <stop offset="1" stop-color="#1865EE"/>
+    </linearGradient>
+    <radialGradient id="lift" cx="0.42" cy="0.40" r="0.62">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DDE6F3"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A4254"/>
+      <stop offset="0.38" stop-color="#1C212C"/>
+      <stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BFCDE2"/>
+      <stop offset="1" stop-color="#AEBFD9"/>
+    </linearGradient>
+    <filter id="drop" x="-30%" y="-30%" width="160%" height="170%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="26"/>
+      <feOffset dx="10" dy="34"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.38"/></feComponentTransfer>
+      <feFlood flood-color="#0B2A86"/>
+      <feComposite operator="in" in2="SourceAlpha"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="barShadow" x="-20%" y="-60%" width="140%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12"/>
+      <feOffset dx="4" dy="14"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.30"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="body" x="-10%" y="-10%" width="120%" height="125%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="14"/>
+      <feOffset dy="16"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.30"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="squircle"><rect x="100" y="100" width="824" height="824" rx="186"/></clipPath>
+  </defs>
+
+  <!-- body: edge-to-edge within the macOS squircle -->
+  <g filter="url(#body)">
+    <rect x="100" y="100" width="824" height="824" rx="186" fill="url(#bg)"/>
+  </g>
+  <g clip-path="url(#squircle)">
+    <rect x="100" y="100" width="824" height="824" fill="url(#lift)"/>
+    <!-- soft inner rim light along the top edge -->
+    <rect x="100" y="100" width="824" height="824" rx="186" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="6"/>
+  </g>
+
+  <!-- subject: the screenshot card, tilted a little for attitude -->
+  <g transform="rotate(-8 512 540)" filter="url(#drop)">
+    <rect x="292" y="268" width="440" height="520" rx="72" fill="url(#card)"/>
+    <!-- broad upper-left highlight -->
+    <path d="M330 300 Q420 286 520 292" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" fill="none" opacity="0.9"/>
+    <!-- two broad text lines below the mask -->
+    <rect x="352" y="590" width="300" height="46" rx="23" fill="url(#line)"/>
+    <rect x="352" y="666" width="200" height="46" rx="23" fill="url(#line)"/>
+  </g>
+
+  <!-- the hook: a redaction bar that is also a mask, with eye holes -->
+  <g transform="rotate(-11 512 440)" filter="url(#barShadow)">
+    <rect x="222" y="372" width="608" height="150" rx="75" fill="url(#bar)"/>
+    <!-- soft top sheen so the bar reads as one soft-plastic piece -->
+    <rect x="262" y="388" width="520" height="34" rx="17" fill="#FFFFFF" opacity="0.10"/>
+    <!-- eye holes: soft white, pupils glancing up-right (sly, watchful) -->
+    <ellipse cx="418" cy="452" rx="63" ry="50" fill="#F8F6F5"/>
+    <ellipse cx="620" cy="452" rx="63" ry="50" fill="#F8F6F5"/>
+    <circle cx="444" cy="441" r="29" fill="#121212"/>
+    <circle cx="646" cy="441" r="29" fill="#121212"/>
+    <circle cx="453" cy="431" r="9" fill="#FFFFFF"/>
+    <circle cx="655" cy="431" r="9" fill="#FFFFFF"/>
+  </g>
+</svg>

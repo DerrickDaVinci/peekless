@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peekless</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" data-page="home">
+  <aside class="nav">
+    <div class="brand">
+      <img src="brand.png" alt="" class="brand-icon">
+      <div><b>Peekless</b><span data-i18n="tagline"></span></div>
+    </div>
+    <nav id="nav">
+      <button type="button" data-page="home"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1z"/></svg><span data-i18n="navHome"></span></button>
+      <button type="button" data-page="guard"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.3-3 7.6-7 9-4-1.4-7-4.7-7-9V6z"/><path d="M8.5 11.5h7"/></svg><span data-i18n="navGuard"></span></button>
+      <button type="button" data-page="ring" data-mac><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="m6.4 6.4 3.5 3.5M17.6 6.4l-3.5 3.5M6.4 17.6l3.5-3.5M17.6 17.6l-3.5-3.5"/></svg><span data-i18n="navRing"></span></button>
+      <button type="button" data-page="keys"><svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="11" rx="2"/><path d="M7 10h.01M10.5 10h.01M14 10h.01M17 10h.01M8 14h8"/></svg><span data-i18n="navKeys"></span></button>
+      <button type="button" data-page="rules"><svg viewBox="0 0 24 24"><path d="M4 7V5h3M17 5h3v2M20 17v2h-3M7 19H4v-2"/><path d="M7.5 10.5h9M7.5 13.5h5"/><rect class="fill" x="12.5" y="12" width="4.5" height="3" rx="1"/></svg><span data-i18n="navRules"></span></button>
+      <button type="button" data-page="output"><svg viewBox="0 0 24 24"><path d="M3.5 7.5a2 2 0 0 1 2-2H10l2 2.5h6.5a2 2 0 0 1 2 2v7.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg><span data-i18n="navOutput"></span></button>
+      <button type="button" data-page="general"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M20.5 12h-2.2M5.7 12H3.5M18 6l-1.6 1.6M7.6 16.4 6 18M18 18l-1.6-1.6M7.6 7.6 6 6"/></svg><span data-i18n="navGeneral"></span></button>
+      <button type="button" data-page="about"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg><span data-i18n="navAbout"></span></button>
+    </nav>
+    <div class="nav-foot">
+      <button type="button" class="guard-pill" id="guardPill"><i></i><span id="guardPillText"></span></button>
+      <span class="ver" id="ver"></span>
+    </div>
+  </aside>
+
+  <main id="main">
+    <!-- HOME -->
+    <section class="page" id="p-home">
+      <header class="ph"><h1 data-i18n="homeTitle"></h1><p data-i18n="homeSub"></p></header>
+      <div class="dropzone" id="dropzone">
+        <div class="dz-icon"><svg viewBox="0 0 24 24"><path d="M12 16V5M7.5 9.5 12 5l4.5 4.5M5 19h14"/></svg></div>
+        <b data-i18n="dropTitle"></b>
+        <span id="dropHint"></span>
+        <div class="dz-actions">
+          <button class="btn" type="button" id="pickBtn" data-i18n="pick"></button>
+          <button class="btn primary" type="button" id="cleanBtn"><span data-i18n="cleanClip"></span><kbd class="sc" id="cleanKbd"></kbd></button>
+        </div>
+      </div>
+      <div class="status-row">
+        <button class="stat" type="button" data-goto="guard"><span data-i18n="statGuard"></span><b id="statGuard"></b></button>
+        <button class="stat" type="button" data-goto="ring" data-mac><span data-i18n="statRing"></span><b id="statRing"></b></button>
+        <button class="stat" type="button" data-goto="keys"><span data-i18n="statKey"></span><b id="statKey"></b></button>
+      </div>
+      <div class="section-head"><h2 data-i18n="recent"></h2><button class="link" type="button" id="clearHistory" data-i18n="clear"></button></div>
+      <ul class="history" id="history"></ul>
+    </section>
+
+    <!-- GUARD -->
+    <section class="page" id="p-guard">
+      <header class="ph"><h1 data-i18n="navGuard"></h1><p data-i18n="guardSub"></p></header>
+      <div class="group">
+        <div class="row"><div><b data-i18n="guardOn"></b><p data-i18n="guardOnS"></p></div><label class="switch"><input type="checkbox" data-set="guard"><i></i></label></div>
+        <div class="row" data-needs="guard"><div><b data-i18n="whenFound"></b><p data-i18n="whenFoundS"></p></div>
+          <div class="seg" data-set="autoCover"><button type="button" data-v="false" data-i18n="modeAsk"></button><button type="button" data-v="true" data-i18n="modeAuto"></button></div></div>
+        <div class="row" data-needs="guard"><div><b data-i18n="cardTime"></b><p data-i18n="cardTimeS"></p></div>
+          <div class="range"><input type="range" min="5" max="60" step="1" data-set="cardSeconds"><output id="cardSecondsOut"></output></div></div>
+      </div>
+      <div class="group" data-needs="guard">
+        <div class="row"><div><b data-i18n="watchImages"></b><p data-i18n="watchImagesS"></p></div><label class="switch"><input type="checkbox" data-set="guardImages"><i></i></label></div>
+        <div class="row"><div><b data-i18n="watchText"></b><p data-i18n="watchTextS"></p></div><label class="switch"><input type="checkbox" data-set="guardText"><i></i></label></div>
+      </div>
+      <div class="group">
+        <div class="row"><div><b data-i18n="tryIt"></b><p data-i18n="tryItS"></p></div><button class="btn" type="button" id="trySample" data-i18n="tryBtn"></button></div>
+      </div>
+      <p class="note" data-i18n="guardNote"></p>
+    </section>
+
+    <!-- RING -->
+    <section class="page" id="p-ring">
+      <header class="ph"><h1 data-i18n="navRing"></h1><p data-i18n="ringSub"></p></header>
+      <div class="group">
+        <div class="row"><div><b data-i18n="ringOn"></b><p id="ringOnS"></p></div><label class="switch"><input type="checkbox" data-set="ring"><i></i></label></div>
+        <div class="row" data-needs="ring"><div><b data-i18n="ringKey"></b><p data-i18n="ringKeyS"></p></div>
+          <div class="seg" data-set="ringModifier"><button type="button" data-v="option">⌥ Option</button><button type="button" data-v="command">⌘ Command</button><button type="button" data-v="control">⌃ Control</button><button type="button" data-v="shift">⇧ Shift</button></div></div>
+      </div>
+      <div class="group ring-editor" data-needs="ring">
+        <div class="re-list">
+          <b data-i18n="ringActions"></b>
+          <p data-i18n="ringActionsS"></p>
+          <ul id="ringList"></ul>
+          <button class="link" type="button" id="ringReset" data-i18n="resetDefault"></button>
+        </div>
+        <div class="re-preview"><svg id="ringPreview" viewBox="0 0 300 300" aria-hidden="true"></svg><span data-i18n="preview"></span></div>
+      </div>
+    </section>
+
+    <!-- SHORTCUTS -->
+    <section class="page" id="p-keys">
+      <header class="ph"><h1 data-i18n="navKeys"></h1><p data-i18n="keysSub"></p></header>
+      <div class="group">
+        <div class="row"><div><b data-i18n="scClean"></b><p data-i18n="scCleanS"></p></div>
+          <div class="rec-wrap">
+            <button class="recorder" type="button" id="recorder"></button>
+            <label class="switch"><input type="checkbox" data-set="shortcutEnabled"><i></i></label>
+          </div></div>
+        <div class="row" id="scWarnRow" hidden><p class="warn" id="scWarn"></p></div>
+        <div class="row"><div><p data-i18n="scHow"></p></div><button class="link" type="button" id="scReset" data-i18n="resetDefault"></button></div>
+      </div>
+      <div class="group" data-mac>
+        <div class="row"><div><b data-i18n="ringGesture"></b><p id="ringGestureS"></p></div><button class="btn" type="button" data-goto="ring" data-i18n="configure"></button></div>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section class="page" id="p-rules">
+      <header class="ph"><h1 data-i18n="navRules"></h1><p data-i18n="rulesSub"></p></header>
+      <div class="group">
+        <div class="row"><div><b data-i18n="styleTitle"></b><p data-i18n="styleS"></p></div>
+          <div class="seg" data-set="style"><button type="button" data-v="solid" data-i18n="solid"></button><button type="button" data-v="pixelate" data-i18n="pixel"></button></div></div>
+      </div>
+      <div id="ruleGroups"></div>
+    </section>
+
+    <!-- OUTPUT -->
+    <section class="page" id="p-output">
+      <header class="ph"><h1 data-i18n="navOutput"></h1><p data-i18n="outputSub"></p></header>
+      <div class="group">
+        <div class="row"><div><b data-i18n="saveWhere"></b><p id="outDirText"></p></div>
+          <div class="rec-wrap"><div class="seg" id="outSeg"><button type="button" data-v="beside" data-i18n="beside"></button><button type="button" data-v="folder" data-i18n="folder"></button></div></div></div>
+        <div class="row"><div><b data-i18n="cleanName"></b><p class="mono" id="cleanPreview"></p></div><input class="text" type="text" data-set="cleanTag" maxlength="24" spellcheck="false"></div>
+        <div class="row"><div><b data-i18n="redactName"></b><p class="mono" id="redactPreview"></p></div><input class="text" type="text" data-set="redactTag" maxlength="24" spellcheck="false"></div>
+        <div class="row"><div><b data-i18n="revealAfter"></b><p data-i18n="revealAfterS"></p></div><label class="switch"><input type="checkbox" data-set="revealAfter"><i></i></label></div>
+      </div>
+      <p class="note" data-i18n="outputNote"></p>
+    </section>
+
+    <!-- GENERAL -->
+    <section class="page" id="p-general">
+      <header class="ph"><h1 data-i18n="navGeneral"></h1></header>
+      <div class="group">
+        <div class="row"><div><b data-i18n="lang"></b></div>
+          <div class="seg" data-set="lang"><button type="button" data-v="auto" data-i18n="followSystem"></button><button type="button" data-v="zh">中文</button><button type="button" data-v="en">English</button></div></div>
+        <div class="row"><div><b data-i18n="theme"></b></div>
+          <div class="seg" data-set="theme"><button type="button" data-v="auto" data-i18n="followSystem"></button><button type="button" data-v="light" data-i18n="light"></button><button type="button" data-v="dark" data-i18n="dark"></button></div></div>
+      </div>
+      <div class="group">
+        <div class="row"><div><b data-i18n="login"></b><p data-i18n="loginS"></p></div><label class="switch"><input type="checkbox" data-set="launchAtLogin"><i></i></label></div>
+        <div class="row"><div><b data-i18n="hidden"></b><p data-i18n="hiddenS"></p></div><label class="switch"><input type="checkbox" data-set="startHidden"><i></i></label></div>
+      </div>
+      <div class="group">
+        <div class="row"><div><b data-i18n="keepHistory"></b><p data-i18n="keepHistoryS"></p></div><label class="switch"><input type="checkbox" data-set="keepHistory"><i></i></label></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="page" id="p-about">
+      <div class="about">
+        <img src="brand.png" alt="" class="about-icon">
+        <h1>Peekless</h1>
+        <p class="about-ver" id="aboutVer"></p>
+        <p class="about-tag" data-i18n="tagline"></p>
+      </div>
+      <div class="group">
+        <div class="row"><div><b data-i18n="promise"></b><p data-i18n="promiseS"></p></div></div>
+        <div class="row"><div><b data-i18n="engine"></b><p data-i18n="engineS"></p></div></div>
+        <div class="row"><div><b data-i18n="cli"></b><p data-i18n="cliS"></p><pre class="code" id="cliCode"></pre></div></div>
+        <div class="row"><div><b data-i18n="license"></b><p data-i18n="licenseS"></p></div></div>
+      </div>
+    </section>
+
+    <!-- IMAGE REVIEW -->
+    <section class="page review" id="p-image">
+      <div class="stage" id="stage"><canvas id="cv"></canvas><div class="busy" id="busy" hidden><span></span></div></div>
+      <aside class="side">
+        <div class="side-head"><h2 id="imgTitle"></h2><p class="muted" id="imgSub"></p></div>
+        <ul class="finds" id="imgList"></ul>
+        <p class="hint" data-i18n="drag"></p>
+        <div class="style-row"><span class="muted" data-i18n="styleTitle"></span>
+          <div class="seg" id="styleSeg"><button type="button" data-s="solid" data-i18n="solid"></button><button type="button" data-s="pixelate" data-i18n="pixel"></button></div></div>
+        <p class="warn small" id="pixelWarn" data-i18n="pixelWarn" hidden></p>
+        <div class="actions">
+          <button class="btn primary" type="button" id="imgCopy"></button>
+          <div class="row2"><button class="btn" type="button" id="imgSave" data-i18n="save"></button><button class="btn ghost" type="button" id="imgCancel" data-i18n="cancel"></button></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- TEXT REVIEW -->
+    <section class="page review" id="p-text">
+      <div class="stage text-stage"><pre id="txt"></pre></div>
+      <aside class="side">
+        <div class="side-head"><h2 id="txtTitle"></h2><p class="muted" data-i18n="txtSub"></p></div>
+        <ul class="finds" id="txtList"></ul>
+        <div class="actions">
+          <button class="btn primary" type="button" id="txtCopy"></button>
+          <div class="row2"><button class="btn ghost" type="button" id="txtCancel" data-i18n="cancel"></button></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FILES -->
+    <section class="page" id="p-files">
+      <header class="ph ph-row"><div><h1 id="filesTitle"></h1><p id="filesSub"></p></div><button class="btn primary" type="button" id="cleanAll" data-i18n="cleanAll"></button></header>
+      <div class="files" id="fileList"></div>
+    </section>
+  </main>
+
+  <div class="drop" id="drop" hidden><div><b data-i18n="dropNow"></b><span data-i18n="dropNowS"></span></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+<script src="preview-mock.js"></script>
+<script src="shared.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

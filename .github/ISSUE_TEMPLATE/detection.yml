@@ -1,0 +1,27 @@
+name: Detection problem
+description: Something was missed, or something harmless was covered
+labels: [detection]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Which way was it wrong?
+      options:
+        - Missed something sensitive
+        - Covered something harmless
+    validations:
+      required: true
+  - type: textarea
+    id: sample
+    attributes:
+      label: A fake example that shows the problem
+      description: "Never paste a real key, ID or card number. Change the digits but keep the format."
+      placeholder: "Order number 1234-5678-9012 was covered as a card number"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Peekless version and OS
+    validations:
+      required: true

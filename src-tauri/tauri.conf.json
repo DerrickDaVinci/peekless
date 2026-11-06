@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Peekless",
+  "version": "0.1.0",
+  "identifier": "app.peekless.desktop",
+  "build": {
+    "frontendDist": "../ui"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Peekless",
+        "width": 1080,
+        "height": 720,
+        "minWidth": 760,
+        "minHeight": 540,
+        "center": true,
+        "dragDropEnabled": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "Clean screenshots, photos and text before you send them.",
+    "longDescription": "Peekless hides emails, phone numbers, ID numbers, card numbers and API keys in screenshots and text, and strips hidden metadata such as GPS location from photos. Everything runs offline on your device.",
+    "copyright": "MIT License",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+    "macOS": { "minimumSystemVersion": "13.0" }
+  }
+}
